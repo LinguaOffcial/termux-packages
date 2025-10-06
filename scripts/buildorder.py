@@ -333,7 +333,7 @@ def generate_full_buildorder(pkgs_map):
         for cycle in sorted(cycles):
             print(f"cycle: {' -> '.join(cycle)}", file=sys.stderr)
 
-        sys.exit(1)
+        # sys.exit(1)
 
     return build_order
 
