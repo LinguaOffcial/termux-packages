@@ -99,6 +99,9 @@ aptly_add_to_repo() {
       --request POST \
       ${REPOSITORY_URL}/repos/${REPOSITORY_NAME}/file/${REPOSITORY_NAME}-${GITHUB_SHA} || true
   )
+
+  echo "[$(date +%H:%M:%S)] curl_response: $curl_response"
+
   http_status_code=$(echo "$curl_response" | cut -d'|' -f2 | grep -oP '\d{3}$')
 
   if [ "$http_status_code" = "200" ]; then
