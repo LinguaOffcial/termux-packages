@@ -97,6 +97,8 @@ read_package_list_deb() {
 download_db_packages_pac() {
 	if [ ! -e "${PATH_DB_PACKAGES}" ]; then
 		echo "[*] Downloading package list for architecture '${package_arch}'..."
+		echo "${PATH_DB_PACKAGES}"
+		echo "${REPO_BASE_URL}/${package_arch}/main.json"
 		curl --fail --location \
 			--output "${PATH_DB_PACKAGES}" \
 			"${REPO_BASE_URL}/${package_arch}/main.json"
