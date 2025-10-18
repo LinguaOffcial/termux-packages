@@ -418,7 +418,7 @@ jobs:
       env:
         REPOSITORY_URL: https://packages.summerain0.club/api
         GITHUB_SHA: ${{ github.sha }}
-        APTLY_API_AUTH: ${{ secrets.APTLY_API_AUTH }}
+        # APTLY_API_AUTH: ${{ secrets.APTLY_API_AUTH }}
         GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       run: |
         source scripts/aptly_api.sh
