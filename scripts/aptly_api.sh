@@ -55,6 +55,8 @@ aptly_delete_dir() {
 
   http_status_code=$(echo "$curl_response" | cut -d'|' -f2 | grep -oP '\d{3}$')
 
+  echo "[$(date +%H:%M:%S)] curl_response: $curl_response"
+
   if [ "$http_status_code" != "200" ]; then
     echo "[$(date +%H:%M:%S)] Warning: server returned $http_status_code code while deleting temporary directory."
   fi
@@ -70,6 +72,8 @@ aptly_upload_file() {
     ${REPOSITORY_URL}/files/${REPOSITORY_NAME}-${GITHUB_SHA} || true
   )
   http_status_code=$(echo "$curl_response" | cut -d'|' -f2 | grep -oP '\d{3}$')
+
+  echo "[$(date +%H:%M:%S)] curl_response: $curl_response"
 
   if [ "$http_status_code" = "200" ]; then
     echo "[$(date +%H:%M:%S)] Uploaded: $(echo "$curl_response" | cut -d'|' -f1 | jq -r '.[]' | cut -d'/' -f2)"
@@ -103,6 +107,8 @@ aptly_add_to_repo() {
   echo "[$(date +%H:%M:%S)] curl_response: $curl_response"
 
   http_status_code=$(echo "$curl_response" | cut -d'|' -f2 | grep -oP '\d{3}$')
+
+  echo "[$(date +%H:%M:%S)] curl_response: $curl_response"
 
   if [ "$http_status_code" = "200" ]; then
     warnings=$(echo "$curl_response" | cut -d'|' -f1 | jq '.Report.Warnings' | jq -r '.[]')
@@ -139,6 +145,8 @@ aptly_publish_repo() {
       ${REPOSITORY_URL}/publish/${REPOSITORY_NAME}/${REPOSITORY_DISTRIBUTION} || true
   )
   http_status_code=$(echo "$curl_response" | cut -d'|' -f2 | grep -oP '\d{3}$')
+
+  echo "[$(date +%H:%M:%S)] curl_response: $curl_response"
 
   if [ "$http_status_code" = "200" ]; then
     echo "[$(date +%H:%M:%S)] Repository has been updated successfully."
