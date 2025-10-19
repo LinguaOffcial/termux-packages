@@ -33,7 +33,7 @@ jobs:
   build:
     permissions:
       contents: read # actions/upload-artifact doesn't need contents: write
-    runs-on: self-hosted
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         target_arch: [aarch64, arm, i686, x86_64]
@@ -311,7 +311,7 @@ jobs:
   test-buildorder-random:
     permissions:
       contents: read
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - name: Clone repository
       uses: actions/checkout@v5
@@ -339,7 +339,7 @@ jobs:
       contents: read
     if: github.ref != 'refs/heads/master'
     needs: build
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - name: Clone repository
       uses: actions/checkout@v5
@@ -406,7 +406,7 @@ jobs:
       contents: read
     if: github.ref == 'refs/heads/master'
     needs: build
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - name: Clone repository
       uses: actions/checkout@v5
