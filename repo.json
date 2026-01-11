@@ -1,10 +1,10 @@
 {
   "pkg_format": "debian",
   "packages": {
-    "name": "stable",
+    "name": "termux-main",
     "distribution": "stable",
     "component": "main",
-    "url": "https://packages.summerain0.club"
+    "url": "https://packages.summerain0.club/termux-main"
   },
   "root-packages": {
     "name": "termux-root",
