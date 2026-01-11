@@ -639,9 +639,9 @@ if [[ "${TERMUX_INSTALL_DEPS-false}" = "true" || "${TERMUX_PACKAGE_LIBRARY-bioni
 		gpg --import "$TERMUX_SCRIPTDIR/packages/termux-keyring/termux-pacman.gpg"
 		gpg --no-tty --command-file <(echo -e "trust\n5\ny") --edit-key 998DE27318E867EA976BA877389CEED64573DFCA
 	}
-	gpg --list-keys 9251F3C0C4611283366B3CC5DC1E78E8F173C04A > /dev/null 2>&1 || {
+	gpg --list-keys EDD239744367CE976CB786806B46B0D74E4EFEC2 > /dev/null 2>&1 || {
 		gpg --import "$TERMUX_SCRIPTDIR/packages/termux-keyring/lingua.gpg"
-		gpg --no-tty --command-file <(echo -e "trust\n5\ny") --edit-key 9251F3C0C4611283366B3CC5DC1E78E8F173C04A
+		gpg --no-tty --command-file <(echo -e "trust\n5\ny") --edit-key EDD239744367CE976CB786806B46B0D74E4EFEC2
 	}
 fi
 
