@@ -23,7 +23,7 @@ on:
         default: "@all"
         required: false
 
-permissions: {} # none
+# permissions: {} # none
 
 jobs:
   update-packages-dry-run:
