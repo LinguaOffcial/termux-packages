@@ -392,7 +392,9 @@ echo "INFO: Running update for: $*"
 
 _start_time="$(date +%10s%3N)"
 # Remove any left over temp files that may not have been cleaned up.
-rm "${TMPDIR:-/tmp}"/termux_ipc_*.fifo &> /dev/null
+if [ -d "${TMPDIR:-/tmp}" ]; then
+	rm "${TMPDIR:-/tmp}"/termux_ipc_*.fifo &> /dev/null
+fi
 # Set up a side channel for reporting parsed latest versions
 export LATEST_VERSION_TEMP_FILE="${TMPDIR:-/tmp}/termux_ipc_$$.fifo"
 
@@ -434,7 +436,9 @@ else
 fi
 
 # Remove temp file
-rm "${TMPDIR:-/tmp}"/termux_ipc_*.fifo
+if [ -d "${TMPDIR:-/tmp}" ]; then
+	rm "${TMPDIR:-/tmp}"/termux_ipc_*.fifo
+fi
 
 #################################################REPORT CHANGES##################################################
 
