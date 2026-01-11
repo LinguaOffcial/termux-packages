@@ -23,7 +23,7 @@ on:
         default: "@all"
         required: false
 
-permissions: {} # none
+# permissions: {} # none
 
 jobs:
   update-packages-dry-run:
@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          token: ${{ github.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Gather build summary
         run: |
           BASE_REF="${{ github.event.pull_request.base.ref }}"
@@ -81,7 +81,7 @@ jobs:
           done | sort -u > ./built-packages.txt
       - name: Process package updates
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BUILD_PACKAGES: "false"
           CREATE_ISSUE: "false"
           GIT_COMMIT_PACKAGES: "false"
