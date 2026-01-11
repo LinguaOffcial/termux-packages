@@ -7,7 +7,7 @@ CURL_COMMON_OPTIONS=(
   --retry 2
   --retry-delay 3
   --user-agent 'Termux-Packages/1.0\ (https://github.com/termux/termux-packages)'
-  --user "${APTLY_API_AUTH}"
+  --header "Authorization: Basic ${APTLY_API_AUTH}"
   --write-out "|%{http_code}"
 )
 
